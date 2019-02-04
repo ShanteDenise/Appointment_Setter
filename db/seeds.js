@@ -32,28 +32,58 @@ const Lucy = new User({
 
 const appointment1 = new Appointment({
     user: Ashley,
-    time: '10:00am'
+    time: '9:00am - 10:00am',
+    isAvailable: false
 })
-
-
 const appointment2 = new Appointment({
     user: Daniel,
-    time: '12:00am'
+    time: '11:00am - 12:00am',
+    isAvailable: false
 })
-
 const appointment3 = new Appointment({
     user: Lucy,
-    time: '11:00am'
+    time: '1:00pm - 2:00pm',
+    isAvailable: false
+})
+const appointment4 = new Appointment({
+    time: '10:00am - 11:00am',
+    isAvailable: true
+})
+const appointment5 = new Appointment({
+    time: '12:00am - 1:00pm',
+    isAvailable: true
+})
+const appointment6 = new Appointment({
+    time: '2:00pm - 3:00pm',
+    isAvailable: true
+})
+const appointment7 = new Appointment({
+    time: '3:00pm - 4:00pm',
+    isAvailable: true
+})
+const appointment8 = new Appointment({
+    time: '4:00pm - 5:00pm',
+    isAvailable: true
+})
+const appointment9 = new Appointment({
+    time: '5:00pm - 6:00pm',
+    isAvailable: true
 })
 
 User.deleteMany({})
     .then(() => User.deleteMany({}))
     .then(() => Appointment.deleteMany({}))
-    .then(() => Appointment.insertMany([appointment1, appointment2, appointment3]))
+    .then(() => Appointment.insertMany([appointment1, appointment2, appointment3, appointment4, appointment5, appointment6, appointment7, appointment8, appointment9]))
     .then(() => User.insertMany([Ashley, Daniel, Lucy]))
     .then(() => appointment1.save())
     .then(() => appointment2.save())
     .then(() => appointment3.save())
+    .then(() => appointment4.save())
+    .then(() => appointment5.save())
+    .then(() => appointment6.save())
+    .then(() => appointment7.save())
+    .then(() => appointment8.save())
+    .then(() => appointment9.save())
     .then(() => console.log("Database seeded success"))
     .then(() => mongoose.connection.close())
 

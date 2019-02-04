@@ -6,10 +6,15 @@ const Appointment = new Schema({
         type: String,
         required: true
     },
+    isAvailable: {
+        type: Boolean,
+        default: true
+    }, 
     user: {
         type: Schema.Types.ObjectId,
         ref: 'User'
     }
+  
     
 });
 
