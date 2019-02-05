@@ -79,23 +79,14 @@ class Scheduler extends Component {
         first_name: this.state.newAppointment.first_name,
         last_name: this.state.newAppointment.last_name,
         phone: this.state.newAppointment.phone,
-        isAvailable: false,
-        id: this.state.id
     }
-    this.setState({
-      first_name: this.state.newAppointment.first_name,
-      last_name: this.state.newAppointment.last_name,
-      phone: this.state.newAppointment.phone,
-      isAvailable: false
-    });
-    axios.post("/api/appointments", payload).then(res => {
-        const newAppointment = res.data;
-        console.log(newAppointment);
+    
+    axios.post("/api/users", payload).then(res => {
+        console.log(res.data);
 
     })
-  };
 
- 
+  };
 
   render() {
     return (
