@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
   font-family: 'Roboto', sans-serif;
@@ -5,11 +6,20 @@
 
 .appointment_card{
   margin: 0 auto;
-  width:800px;
+  width:60%;
   font-size: 20px;
   line-height: 60px;
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.17);
 }
+
 .time_list{
   border: solid 0.8px rgba(128, 128, 128, 0.151);
+  font-weight: 500;
+}
+
+.time_list:hover{
+  background-color: rgba(128, 128, 128, 0.137);
+}
+.modal_header{
+  background-color: #004e8d#059 teal hsl(206,100,27)rgb(0,78,141)
 }

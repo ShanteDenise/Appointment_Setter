@@ -73,7 +73,7 @@ const appointment9 = new Appointment({
 User.deleteMany({})
     .then(() => User.deleteMany({}))
     .then(() => Appointment.deleteMany({}))
-    .then(() => Appointment.insertMany([appointment1, appointment2, appointment3, appointment4, appointment5, appointment6, appointment7, appointment8, appointment9]))
+    .then(() => Appointment.insertMany([appointment1, appointment4, appointment2, appointment5, appointment3, appointment6, appointment7, appointment8, appointment9]))
     .then(() => User.insertMany([Ashley, Daniel, Lucy]))
     .then(() => appointment1.save())
     .then(() => appointment2.save())
