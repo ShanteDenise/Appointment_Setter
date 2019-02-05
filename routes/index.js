@@ -6,5 +6,6 @@ const appointments = require('../controllers/appointments')
 router.get('/api/users', users.index)
 router.get('/api/appointments', appointments.index)
 
+router.post('/api/appointments', appointments.create)
 
 module.exports = router
