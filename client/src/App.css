@@ -1,0 +1,15 @@
+.App {
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+.appointment_card{
+  margin: 0 auto;
+  width:800px;
+  font-size: 20px;
+  line-height: 60px;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.17);
+}
+.time_list{
+  border: solid 0.8px rgba(128, 128, 128, 0.151);
+}
