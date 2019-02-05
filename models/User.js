@@ -6,7 +6,7 @@ const User = new Schema ({
     last_name:String,
     phone: {
         type: Number,
-        min: 10,
+        min: 9,
     },
 
 })

@@ -1,7 +1,7 @@
 const Appointment = require('../models/Appointment')
 
 
-const appointments = {
+const appointmentsController = {
 
 index: (req, res) => {
   Appointment.find().then(data => {
@@ -15,10 +15,19 @@ create: (req, res) => {
       appointment.save()
       res.send(newAppointment)
     })
+  },
+  update: (req, res) => {
+    Appointment.findByIdAndUpdate(req.params.id, req.body)
+    .then((newAppointment) => {
+      newAppointment.save()
+      res.send(newAppointment)
+    })
+  
+    
   }
 }
 
 
 
 
-module.exports = appointments;
+module.exports = appointmentsController;
