@@ -9,4 +9,6 @@ router.post('/api/users', usersController.create)
 router.get('/api/appointments', appointmentsController.index)
 router.post('/api/appointments', appointmentsController.create)
 router.patch('/api/appointments/:id', appointmentsController.update)
+
+
 module.exports = router

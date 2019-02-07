@@ -3,21 +3,14 @@ import axios from "axios";
 import {
   Modal,
   ModalHeader,
-  ModalBody,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  Button,
-  Col,
-  Row
+  ModalBody
 } from "reactstrap";
+import FormApp from './Form'
 
 var timeStyle = {
   background: "red",
   color: "white"
 };
-
 
 
 class Scheduler extends Component {
@@ -67,7 +60,7 @@ class Scheduler extends Component {
   };
 
   handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     const payload = {
         first_name: this.state.newAppointment.first_name,
         last_name: this.state.newAppointment.last_name,
@@ -75,17 +68,18 @@ class Scheduler extends Component {
     }
 
     axios.post("/api/users", payload).then(res => {
-      console.log(res.data)
       const payloadApp = {
         user: res.data._id,
         isAvailable: false
       }
+      console.log(res.data)
       axios.patch(`/api/appointments/${this.state.id}`, payloadApp).then(res =>
         {console.log(res.data)})
     })
     this.toggle()
-
   };
+
+
 
   render() {
     return (
@@ -107,61 +101,13 @@ class Scheduler extends Component {
             {this.isAvailable === true ? "Book An Appointment" : "Appointment Slot is Taken. Please choose a different time"}
           </ModalHeader>
           <ModalBody>
-            <Form onSubmit={this.handleSubmit}>
-              <Row>
-                <Col md={6}>
-                  <FormGroup>
-                    <Label for="first_name">First Name</Label>
-                    <Input
-                      onChange={this.handleChange}
-                      type="text"
-                      name="first_name"
-                      id="exampleName"
-                      placeholder="Enter First Name"
-                    />
-                  </FormGroup>
-                </Col>
-                <Col md={6}>
-                  <FormGroup>
-                    <Label for="last_name">Last Name</Label>
-                    <Input
-                      onChange={this.handleChange}
-                      type="text"
-                      name="last_name"
-                      id="exampleName"
-                      placeholder="Enter Last Name"
-                    />
-                  </FormGroup>
-                </Col>
-              </Row>
 
-              <FormGroup>
-                <Label for="examplePhone">Phone</Label>
-                <Input
-                  onChange={this.handleChange}
-                  type="Number"
-                  name="phone"
-                  id="examplePhone"
-                  placeholder="Enter Phone Number"
-                />
-              </FormGroup>
-              <FormGroup>
-                <Label for="exampleEmail">Email</Label>
-                <Input
-                  onChange={this.handleChange}
-                  type="email"
-                  name="email"
-                  id="exampleEmail"
-                  placeholder="with a placeholder"
-                />
-              </FormGroup>
-              <FormGroup check>
-                <Label check>
-                  <Input type="checkbox" /> Check me out
-                </Label>
-              </FormGroup>
-              <Button>Submit</Button>
-            </Form>
+            <FormApp  handleSubmit={this.handleSubmit} 
+                      handleChange={this.handleChange} 
+                      id={this.state.id} 
+                      newAppointment={this.state.newAppointment}
+    />
+            
           </ModalBody>
         </Modal>
         </div>
