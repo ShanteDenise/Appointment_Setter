@@ -6,7 +6,7 @@ import {
   ModalBody
 } from "reactstrap";
 import FormApp from './Form'
-import { getAllUsers} from '../actions/index';
+import { getAllUsers, toggle} from '../actions/index';
 import { connect } from 'react-redux'
 
 
@@ -18,10 +18,6 @@ var timeStyle = {
 
 class Scheduler extends Component {
   state = {
-    appointments: [],
-    modalIsOpen: false,
-    id: "",  
-
     newAppointment: {
       first_name: "",
       last_name: "",
@@ -33,13 +29,6 @@ class Scheduler extends Component {
    this.props.getAllUsers();
   }
 
-  // getAllUsers = () => {
-  //   this.props.dispatch({
-  //     type: 'GET_USERS'
-  //     });
-
-      
-  //   }
 
   openTime = (app) => {
     this.setState({
@@ -49,9 +38,7 @@ class Scheduler extends Component {
   };
 
   toggle = () => {
-    this.setState(prevState => ({
-      modalIsOpen: !prevState.modalIsOpen
-    }));
+    this.props.toggle()
   };
 
   handleChange = e => {
@@ -75,7 +62,6 @@ class Scheduler extends Component {
         user: res.data._id,
         isAvailable: false
       }
-      console.log(res.data)
       axios.patch(`/api/appointments/${this.state.id}`, payloadApp).then(res =>
         {console.log(res.data)})
     })
@@ -88,7 +74,7 @@ class Scheduler extends Component {
   render() {
     return (
       <div className="appointment_card">
-        {this.state.appointments.map((appointment, i) => (
+        {this.props.appointments.map((appointment, i) => (
           <div className="time_list" onClick={() => this.openTime(appointment._id)} key={i}>
             {appointment.isAvailable === true ? (
               appointment.time
@@ -124,7 +110,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getAllUsers: () => dispatch(getAllUsers())
+    getAllUsers: () => dispatch(getAllUsers()),
+    toggle: () => dispatch(toggle())
   }
 }
 

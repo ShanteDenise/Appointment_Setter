@@ -12,26 +12,29 @@ const initalState = {
 
   //Reducers
 
-  function getAllUsers (state = initalState, action) {
+  function getAllUsers (state = initalState, action, app) {
       switch(action.type) {
           case 'GET_USERS':
-          const appointments = action.payload
-          console.log(appointments)
           return{
               ...state,
               appointments: action.payload
+          }
+          case 'TOGGLE':
+          return {
+              ...state,
+              modalIsOpen: action.modalIsOpen
+          }
+          case 'MODALOPEN':
+          return{
+              ...state,
+                  modalIsOpen: true,
+                  id: app
+          
           }
           default:
           return state 
         }
     }
-
-//     axios.get("/api/appointments").then(res => {
-//       this.setState({
-//         appointments: res.data
-//       });
-//     });
-//   };
 
 
   export default getAllUsers;

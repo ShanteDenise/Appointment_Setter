@@ -4,13 +4,12 @@ import thunk from 'redux-thunk';
 
 import reducers from '../reducers/index';
 
-const initialState = {};
+
 
 const middleware = [thunk];
 
 const store = createStore(
   reducers,
-  initialState,
   compose(
     applyMiddleware(...middleware),
     window.__REDUX_DEVTOOLS_EXTENSION__

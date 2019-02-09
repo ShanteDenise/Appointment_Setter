@@ -10,3 +10,13 @@ export function getAllUsers() {
       })
     }
   };
+
+ export function toggle(prevState){
+     return {
+         type: 'TOGGLE',
+         modalIsOpen: !prevState
+     }
+ }
+
+
+
