@@ -6,6 +6,9 @@ import {
   ModalBody
 } from "reactstrap";
 import FormApp from './Form'
+import { getAllUsers} from '../actions/index';
+import { connect } from 'react-redux'
+
 
 var timeStyle = {
   background: "red",
@@ -27,16 +30,16 @@ class Scheduler extends Component {
   };
 
   componentDidMount() {
-    this.getAllUsers();
+   this.props.getAllUsers();
   }
 
-  getAllUsers = () => {
-    axios.get("/api/appointments").then(res => {
-      this.setState({
-        appointments: res.data
-      });
-    });
-  };
+  // getAllUsers = () => {
+  //   this.props.dispatch({
+  //     type: 'GET_USERS'
+  //     });
+
+      
+  //   }
 
   openTime = (app) => {
     this.setState({
@@ -78,6 +81,7 @@ class Scheduler extends Component {
     })
     this.toggle()
   };
+ 
 
 
 
@@ -97,8 +101,7 @@ class Scheduler extends Component {
         <Modal isOpen={this.state.modalIsOpen}>
           <ModalHeader toggle={this.toggle}>
             <p>Book Your Appointment</p>
-
-            {this.isAvailable === true ? "Book An Appointment" : "Appointment Slot is Taken. Please choose a different time"}
+                          
           </ModalHeader>
           <ModalBody>
 
@@ -115,5 +118,14 @@ class Scheduler extends Component {
     );
   }
 }
+const mapStateToProps = (state) => {
+  return state
+}
 
-export default Scheduler;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getAllUsers: () => dispatch(getAllUsers())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Scheduler);
