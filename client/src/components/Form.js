@@ -19,6 +19,7 @@ import  { Form, FormGroup, Label, Input, Button, Col, Row} from 'reactstrap'
                       name="first_name"
                       id="exampleName"
                       placeholder="Enter First Name"
+                      required
                     />
                   </FormGroup>
                 </Col>
@@ -31,6 +32,7 @@ import  { Form, FormGroup, Label, Input, Button, Col, Row} from 'reactstrap'
                       name="last_name"
                       id="exampleName"
                       placeholder="Enter Last Name"
+                      required
                     />
                   </FormGroup>
                 </Col>
@@ -40,10 +42,12 @@ import  { Form, FormGroup, Label, Input, Button, Col, Row} from 'reactstrap'
                 <Label for="examplePhone">Phone</Label>
                 <Input
                   onChange={this.props.handleChange}
-                  type="Number"
+                  type="tel"
+                  pattern="^[0-9-+s()]*$"
                   name="phone"
                   id="examplePhone"
                   placeholder="Enter Phone Number"
+                  required
                 />
               </FormGroup>
               <FormGroup>

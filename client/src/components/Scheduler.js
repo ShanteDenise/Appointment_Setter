@@ -1,23 +1,18 @@
 import React, { Component } from "react";
 import axios from "axios";
-import {
-  Modal,
-  ModalHeader,
-  ModalBody
-} from "reactstrap";
-import FormApp from './Form'
-import { getAllUsers, toggle} from '../actions/index';
-import { connect } from 'react-redux'
-
+import { Modal, ModalHeader, ModalBody } from "reactstrap";
+import FormApp from "./Form";
+import { getAllUsers } from "../actions/index";
+import { connect } from "react-redux";
 
 var timeStyle = {
   background: "red",
   color: "white"
 };
 
-
 class Scheduler extends Component {
   state = {
+    modalIsOpen: false,
     newAppointment: {
       first_name: "",
       last_name: "",
@@ -26,19 +21,22 @@ class Scheduler extends Component {
   };
 
   componentDidMount() {
-   this.props.getAllUsers();
+    this.props.getAllUsers();
   }
 
-
-  openTime = (app) => {
+  openTime = (app) => {    
+ 
     this.setState({
       modalIsOpen: true,
       id: app
     });
-  };
+  }
+
 
   toggle = () => {
-    this.props.toggle()
+    this.setState(prevState => ({
+      modalIsOpen: !prevState.modalIsOpen
+    }));
   };
 
   handleChange = e => {
@@ -49,25 +47,27 @@ class Scheduler extends Component {
     });
   };
 
-  handleSubmit = (e) => {
-    e.preventDefault()
+  handleSubmit = e => {
+    e.preventDefault();
     const payload = {
-        first_name: this.state.newAppointment.first_name,
-        last_name: this.state.newAppointment.last_name,
-        phone: this.state.newAppointment.phone,
-    }
+      first_name: this.state.newAppointment.first_name,
+      last_name: this.state.newAppointment.last_name,
+      phone: this.state.newAppointment.phone
+    };
 
     axios.post("/api/users", payload).then(res => {
       const payloadApp = {
         user: res.data._id,
         isAvailable: false
-      }
-      axios.patch(`/api/appointments/${this.state.id}`, payloadApp).then(res =>
-        {console.log(res.data)})
-    })
-    this.toggle()
+      };
+      axios
+        .patch(`/api/appointments/${this.state.id}`, payloadApp)
+        .then(res => {
+          console.log(res.data);
+        });
+    });
+    this.toggle();
   };
- 
 
 
 
@@ -75,7 +75,11 @@ class Scheduler extends Component {
     return (
       <div className="appointment_card">
         {this.props.appointments.map((appointment, i) => (
-          <div className="time_list" onClick={() => this.openTime(appointment._id)} key={i}>
+          <div
+            className="time_list"
+            onClick={() => this.openTime(appointment._id)}
+            key={i}
+          >
             {appointment.isAvailable === true ? (
               appointment.time
             ) : (
@@ -83,36 +87,35 @@ class Scheduler extends Component {
             )}
           </div>
         ))}
-        
+
         <Modal isOpen={this.state.modalIsOpen}>
           <ModalHeader toggle={this.toggle}>
             <p>Book Your Appointment</p>
-                          
           </ModalHeader>
           <ModalBody>
-
-            <FormApp  handleSubmit={this.handleSubmit} 
-                      handleChange={this.handleChange} 
-                      id={this.state.id} 
-                      newAppointment={this.state.newAppointment}
-    />
-            
+            <FormApp
+              handleSubmit={this.handleSubmit}
+              handleChange={this.handleChange}
+              id={this.state.id}
+              newAppointment={this.state.newAppointment}
+            />
           </ModalBody>
         </Modal>
-        </div>
-
+      </div>
     );
   }
 }
-const mapStateToProps = (state) => {
-  return state
-}
+const mapStateToProps = state => {
+  return state;
+};
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     getAllUsers: () => dispatch(getAllUsers()),
-    toggle: () => dispatch(toggle())
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Scheduler);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Scheduler);

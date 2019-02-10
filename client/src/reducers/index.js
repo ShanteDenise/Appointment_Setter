@@ -12,7 +12,7 @@ const initalState = {
 
   //Reducers
 
-  function getAllUsers (state = initalState, action, app) {
+  function getAllUsers (state = initalState, action) {
       switch(action.type) {
           case 'GET_USERS':
           return{
@@ -24,17 +24,11 @@ const initalState = {
               ...state,
               modalIsOpen: action.modalIsOpen
           }
-          case 'MODALOPEN':
-          return{
-              ...state,
-                  modalIsOpen: true,
-                  id: app
-          
-          }
           default:
           return state 
         }
     }
 
+   
 
   export default getAllUsers;

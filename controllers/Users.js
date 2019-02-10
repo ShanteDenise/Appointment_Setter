@@ -14,7 +14,12 @@ const usersController = {
     .then((newuser) => {
       res.send(newuser);
     });
-  }
+  },
+  edit: (req, res) => {
+    User.findById(req.params.id).then(user => {
+        res.json(user)
+        })
+  },
 };
 
 module.exports = usersController;
