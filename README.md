@@ -4,19 +4,32 @@ MERN Stack Application Allows users to Book Appointments. Once Appointment time 
 
 Technologies Used
 -------
-Mongoose
-Express
-React
-Redux
-Node
-ReactStrap
+Mongoose - Connections
+
+MongdoDB - Database.
+
+Express 
+
+React.js -Frontend Framework
+
+Redux - State Manager
+
+Node - server-side environment
+
+ReactStrap - Styling 
 
 Photos of Application
 -----
 
 
+
 Planning
--------
+------
+
+Trello
+https://trello.com/b/jl3DegOw/appointment-setter
+
+ERDs
 
 
 
