@@ -1,4 +1,4 @@
-.App {
+.app {
   text-align: center;
   font-family: "Roboto", sans-serif;
 }
@@ -41,3 +41,7 @@
 .jumbotron {
   margin-bottom: 0 !important;
 }
+
+ .appointmentText{
+   color: white;
+ }

@@ -10,6 +10,14 @@ var timeStyle = {
   color: "white"
 };
 
+var modalFont = {
+  color: 'red',
+  textAlign: 'center'
+}
+var headModalFont = {
+  textAlign: 'center'
+}
+
 class Scheduler extends Component {
   state = {
     modalIsOpen: false,
@@ -110,7 +118,8 @@ class Scheduler extends Component {
 
         <Modal isOpen={this.state.modalIsOpen}>
           <ModalHeader toggle={this.toggle}>
-            <p>Book Your Appointment</p>
+            <h5 style={headModalFont}>Book Your Appointment</h5>
+            <p style={modalFont}> Note: Once Appointment is booked time slot will turn Red</p>
           </ModalHeader>
           <ModalBody>
             <FormApp

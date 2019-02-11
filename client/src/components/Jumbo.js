@@ -3,7 +3,7 @@ import { Jumbotron, Button } from 'reactstrap';
 import React, { Component } from 'react'
 
 
-export default class Jumbo extends Component {
+ class Jumbo extends Component {
     render() {
   return (
     <div>
@@ -20,4 +20,4 @@ export default class Jumbo extends Component {
   );
 };
 
-}
+}export default Jumbo;
