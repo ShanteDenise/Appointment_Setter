@@ -11,11 +11,28 @@ export function getAllUsers() {
     }
   };
 
- export function toggle(prevState){
-     return {
-         type: 'TOGGLE',
-         modalIsOpen: !prevState
-     }
- }
+
+ export function handleChange(name, value, id) {
+    return {
+        type: 'HANDLE_CHANGE',
+        payload: {
+            name,
+            value,
+            id
+        }
+    }
+}
+
+
+
+ export function changeAppointStatus(isAvailable, id){
+    return {
+        type: 'APPOINTMENT_STATUS',
+        payload: {
+            isAvailable,
+            id
+        }
+    }
+} 
 
   

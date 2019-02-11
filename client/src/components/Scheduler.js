@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Modal, ModalHeader, ModalBody } from "reactstrap";
 import FormApp from "./Form";
-import { getAllUsers } from "../actions/index";
+import { getAllUsers, handleChange, changeAppointStatus } from "../actions/index";
 import { connect } from "react-redux";
 
 var timeStyle = {
@@ -25,7 +25,6 @@ class Scheduler extends Component {
   }
 
   openTime = (app) => {    
- 
     this.setState({
       modalIsOpen: true,
       id: app
@@ -40,19 +39,28 @@ class Scheduler extends Component {
   };
 
   handleChange = e => {
-    const appointment = { ...this.state.newAppointment };
-    appointment[e.target.name] = e.target.value;
+    const name = e.target.name;
+    const value = e.target.value;
+    const id = e.target.id;
+    
+    this.props.handleChange(name, value, id);
+
+    // Also updating the state with the id
     this.setState({
-      newAppointment: appointment
+      id
     });
   };
 
+
   handleSubmit = e => {
     e.preventDefault();
+    const id = this.state.id;
+    const currentAppointment = this.currentAppoint(id);
     const payload = {
-      first_name: this.state.newAppointment.first_name,
-      last_name: this.state.newAppointment.last_name,
-      phone: this.state.newAppointment.phone
+      first_name: currentAppointment.user.first_name,
+      last_name: currentAppointment.user.last_name,
+      phone: currentAppointment.user.phone,
+      // email: currentAppointment.user.email
     };
 
     axios.post("/api/users", payload).then(res => {
@@ -64,14 +72,26 @@ class Scheduler extends Component {
         .patch(`/api/appointments/${this.state.id}`, payloadApp)
         .then(res => {
           console.log(res.data);
+          this.props.changeAppointStatus(false, id);
         });
     });
     this.toggle();
   };
 
+  currentAppoint = id => {
+    const appointments = this.props.appointments// all appointments from redux
+    let current = { };
+    for (let i = 0; i < appointments.length; i++) {
+      if (id === appointments[i]._id) {
+        current = appointments[i];
+      }
+    }// current appointment
 
+    return current;
+  }
 
   render() {
+    const id = this.state.id || null;
     return (
       <div className="appointment_card">
         {this.props.appointments.map((appointment, i) => (
@@ -97,7 +117,7 @@ class Scheduler extends Component {
               handleSubmit={this.handleSubmit}
               handleChange={this.handleChange}
               id={this.state.id}
-              newAppointment={this.state.newAppointment}
+              newAppointment={this.currentAppoint(id)}
             />
           </ModalBody>
         </Modal>
@@ -112,6 +132,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getAllUsers: () => dispatch(getAllUsers()),
+    handleChange: (name, value, id) => dispatch(handleChange(name, value, id)),
+    changeAppointStatus: (isAvailable, id) => dispatch(changeAppointStatus(isAvailable, id)),
   };
 };
 

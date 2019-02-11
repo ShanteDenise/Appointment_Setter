@@ -4,7 +4,9 @@ const Appointment = require('../models/Appointment')
 const appointmentsController = {
 
 index: (req, res) => {
-  Appointment.find().then(data => {
+  Appointment.find()
+  .populate('user')
+  .then(data => {
     res.json(data)
   })
 },

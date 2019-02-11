@@ -3,23 +3,44 @@
   text-align: center;
   font-family: 'Roboto', sans-serif;
 }
+.container-header{
+  background-image: url("https://d8imphy647zzg.cloudfront.net/wp-content/uploads/2017/07/About-Us-Main-Image.jpg");
+  background-attachment: fixed;
+}
 
 .appointment_card{
   margin: 0 auto;
-  width:60%;
+  width:30rem;
   font-size: 20px;
   line-height: 60px;
+  border: solid 3px navy;
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.17);
+  background-color: white;
 }
 
+.header-image{
+  height:300px;
+  background-image: url("https://d8imphy647zzg.cloudfront.net/wp-content/uploads/2017/07/About-Us-Main-Image.jpg");
+  background-attachment: fixed;
+  color: black;
+}
+.schedule{
+  display: flex;
+}
+
+.schedule{
+  background-color: navy;
+}
 .time_list{
-  border: solid 0.8px rgba(128, 128, 128, 0.151);
+  border: solid 1px rgba(0, 0, 128, 0.452);
   font-weight: 500;
 }
 
 .time_list:hover{
   background-color: rgba(128, 128, 128, 0.137);
 }
-.modal_header{
-  background-color: #004e8d#059 teal hsl(206,100,27)rgb(0,78,141)
+
+.jumbotron{
+  margin-bottom: 0!important
+
 }

@@ -6,6 +6,8 @@ import  { Form, FormGroup, Label, Input, Button, Col, Row} from 'reactstrap'
 
  class FormApp extends Component {
   render() {
+    const currentAppoinment = this.props.newAppointment;
+
     return (
       <div>
         <Form onSubmit={this.props.handleSubmit}>
@@ -17,8 +19,9 @@ import  { Form, FormGroup, Label, Input, Button, Col, Row} from 'reactstrap'
                       onChange={this.props.handleChange}
                       type="text"
                       name="first_name"
-                      id="exampleName"
+                      id={currentAppoinment._id}
                       placeholder="Enter First Name"
+                      value={currentAppoinment.user ? currentAppoinment.user.first_name : ''}
                       required
                     />
                   </FormGroup>
@@ -30,7 +33,8 @@ import  { Form, FormGroup, Label, Input, Button, Col, Row} from 'reactstrap'
                       onChange={this.props.handleChange}
                       type="text"
                       name="last_name"
-                      id="exampleName"
+                      value={currentAppoinment.user ? currentAppoinment.user.last_name : ''}
+                      id={currentAppoinment._id}
                       placeholder="Enter Last Name"
                       required
                     />
@@ -45,7 +49,8 @@ import  { Form, FormGroup, Label, Input, Button, Col, Row} from 'reactstrap'
                   type="tel"
                   pattern="^[0-9-+s()]*$"
                   name="phone"
-                  id="examplePhone"
+                  id={currentAppoinment._id}
+                  value={currentAppoinment.user ? currentAppoinment.user.phone : ''}
                   placeholder="Enter Phone Number"
                   required
                 />
@@ -56,16 +61,12 @@ import  { Form, FormGroup, Label, Input, Button, Col, Row} from 'reactstrap'
                   onChange={this.props.handleChange}
                   type="email"
                   name="email"
-                  id="exampleEmail"
-                  placeholder="with a placeholder"
+                  id={currentAppoinment._id}
+                  // value={newAppointment.user.email}
+                  placeholder="Email is Optional"
                 />
               </FormGroup>
-              <FormGroup check>
-                <Label check>
-                  <Input type="checkbox" /> Check me out
-                </Label>
-              </FormGroup>
-              <Button>Submit</Button>
+              <Button color="primary">Submit</Button>
             </Form>
         
       </div>
