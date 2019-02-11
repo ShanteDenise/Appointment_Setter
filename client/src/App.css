@@ -1,16 +1,15 @@
-
 .App {
   text-align: center;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
-.container-header{
+.container-header {
   background-image: url("https://d8imphy647zzg.cloudfront.net/wp-content/uploads/2017/07/About-Us-Main-Image.jpg");
   background-attachment: fixed;
 }
 
-.appointment_card{
+.appointment_card {
   margin: 0 auto;
-  width:30rem;
+  width: 50%;
   font-size: 20px;
   line-height: 60px;
   border: solid 3px navy;
@@ -18,29 +17,27 @@
   background-color: white;
 }
 
-.header-image{
-  height:300px;
+.header-image {
+  height: 300px;
   background-image: url("https://d8imphy647zzg.cloudfront.net/wp-content/uploads/2017/07/About-Us-Main-Image.jpg");
   background-attachment: fixed;
   color: black;
 }
-.schedule{
-  display: flex;
-}
 
-.schedule{
+.schedule {
   background-color: navy;
+  background-size: cover;
+  background-attachment: fixed;
 }
-.time_list{
+.time_list {
   border: solid 1px rgba(0, 0, 128, 0.452);
   font-weight: 500;
 }
 
-.time_list:hover{
+.time_list:hover {
   background-color: rgba(128, 128, 128, 0.137);
 }
 
-.jumbotron{
-  margin-bottom: 0!important
-
+.jumbotron {
+  margin-bottom: 0 !important;
 }
