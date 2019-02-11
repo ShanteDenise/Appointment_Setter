@@ -37,6 +37,9 @@ Trello
 https://trello.com/b/jl3DegOw/appointment-setter
 
 ERDs
+----
+![screen shot 2019-02-11 at 7 25 16 am](https://user-images.githubusercontent.com/33140493/52564180-796b4a00-2dd1-11e9-8682-2955a26f2efd.png)
+
 
 
 
