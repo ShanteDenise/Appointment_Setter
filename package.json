@@ -4,10 +4,9 @@
   "description": "Appointment Full Stack MERN App",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "node server.js",
-    "dev": "concurrently \"nodemon server.js\" \"cd ./client  && npm start \" ",
-    "test": "jest"
+    "dev": "concurrently \"nodemon server.js\" \"cd ./client  && npm start \" "
   },
   "repository": {
     "type": "git",
@@ -24,12 +23,14 @@
     "body-parser": "^1.18.3",
     "bootstrap": "^4.2.1",
     "concurrently": "^4.1.0",
+    "cookie-parser": "^1.4.4",
     "dotenv": "^6.2.0",
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.9.1",
     "express": "^4.16.4",
     "jest": "^24.1.0",
     "mongoose": "^5.4.8",
+    "morgan": "^1.9.1",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-redux": "^6.0.0",
