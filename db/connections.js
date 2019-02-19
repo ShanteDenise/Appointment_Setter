@@ -1,7 +1,7 @@
 //Connection to a database
-require('dotenv').config();
+// require('dotenv').config();
 
-// Connect to database
+// // Connect to database
 // const mongoose = require('mongoose');
 
 // if (process.env.MONGODB_URI) {
@@ -19,14 +19,26 @@ require('dotenv').config();
 //     console.log("Mongoose has connected to MongoDB!");
 //   });
 
+// const mongoose = require('mongoose');
+// mongoose.connect(process.env.MONGODB_URI).then(() => {
+//     console.log('Connected to MongoDB')
+// }) 
+// // If the connection throws an error
+// mongoose.connection.on('error', (err) => {
+//     console.log('Mongoose default connection error: ' + err);
+//   }) 
+
+
+// module.exports = mongoose
+
+//Connection to a database
+require('dotenv').config();
+
 const mongoose = require('mongoose');
 mongoose.connect(process.env.MONGODB_URI).then(() => {
     console.log('Connected to MongoDB')
 }) 
-// If the connection throws an error
-mongoose.connection.on('error', (err) => {
-    console.log('Mongoose default connection error: ' + err);
-  }) 
+
 
 
 module.exports = mongoose
