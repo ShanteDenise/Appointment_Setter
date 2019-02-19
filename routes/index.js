@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
-const usersController = require('../controllers/users')
-const appointmentsController = require('../controllers/appointments')
+const usersController = require('../controllers/Users')
+const appointmentsController = require('../controllers/Appointments')
 
 router.get('/api/users', usersController.index)
 router.post('/api/users', usersController.create)
