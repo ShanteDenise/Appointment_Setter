@@ -33,7 +33,6 @@ mongoose.connect( process.env.MONGODB_URI || 'mongodb://localhost/my_database', 
 
 // Configuration
 
-app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/', routes);
 
 // Step 3
