@@ -2,6 +2,8 @@
 require('dotenv').config();
 
 // Connect to database
+const mongoose = require('mongoose');
+
 if (process.env.MONGODB_URI) {
     mongoose.connect(process.env.MONGODB_URI);
   }
