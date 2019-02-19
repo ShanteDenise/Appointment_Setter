@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "dev": "concurrently \"nodemon server.js\" \"cd ./client  && npm start \" "
+    "dev": "concurrently \"nodemon server.js\" \"cd ./client  && npm start \" ",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -24,7 +25,10 @@
     "bootstrap": "^4.2.1",
     "concurrently": "^4.1.0",
     "dotenv": "^6.2.0",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.9.1",
     "express": "^4.16.4",
+    "jest": "^24.1.0",
     "mongoose": "^5.4.8",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
@@ -32,5 +36,8 @@
     "reactstrap": "^7.1.0",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0"
+  },
+  "engines": {
+    "node": "9.7.0"
   }
 }

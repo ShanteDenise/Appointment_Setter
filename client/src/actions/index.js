@@ -11,7 +11,6 @@ export function getAllUsers() {
     }
   };
 
-
  export function handleChange(name, value, id) {
     return {
         type: 'HANDLE_CHANGE',
@@ -23,8 +22,6 @@ export function getAllUsers() {
     }
 }
 
-
-
  export function changeAppointStatus(isAvailable, id){
     return {
         type: 'APPOINTMENT_STATUS',
@@ -35,4 +32,3 @@ export function getAllUsers() {
     }
 } 
 
-  
