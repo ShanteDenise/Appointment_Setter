@@ -1,6 +1,8 @@
 # Appointment_Setter
 MERN Stack Application Allows users to Book Appointments. Once Appointment time is taken, the time slot turns red. If a user clicks on a red time slot then the user will be able to edit their appointment. 
 
+# Live Site
+https://appointment-maker-cox.herokuapp.com/
 
 Technologies Used
 -------
