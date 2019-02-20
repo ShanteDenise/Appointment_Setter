@@ -28,7 +28,8 @@ const bodyParser = require('body-parser');
 const path = require('path');
 
 // importing files
-const routes = require('./routes');
+const routes = require('./routes/index')
+// const routes = require('./routes');
 
 // Define Global Variables
 const app = express();
